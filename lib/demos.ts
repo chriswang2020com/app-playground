@@ -18,6 +18,11 @@ export const demos: { name: string; items: Item[] }[] = [
         slug: 'route-groups',
         description: 'Organize routes without affecting URL paths',
       },
+      {
+        name: 'PDBQT FILE SEARCH',
+        slug: 'layouts',
+        description: 'Create UI that is shared across routes',
+      },
     ],
   },
   {
