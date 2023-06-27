@@ -1,28 +1,41 @@
+'use client';
+import React, { useState,useEffect } from 'react';
 import { ExternalLink } from '#/ui/external-link';
 import Link from 'next/link';
 
-const items = [
-  {
-    name: 'Updating searchParams',
-    slug: 'search-params',
-    description: 'Update searchParams using `useRouter` and `<Link>`',
-  },
-];
 
 export default function Page() {
+  const [outputData, setOutputData] = useState<{id: number; name: string }[] | null>(null);
+
+  useEffect(() => {
+    fetch('http://localhost:3001/search?q=somequery')
+      .then((response) => response.json())
+      .then((data) => setOutputData(data));
+  }, []);
+
+
   return (
-    <div className="prose prose-sm prose-invert max-w-none">
-      <h1 className="text-xl font-bold">Layouts</h1>
+    <div className="space-y-6">
+      <h1 className="text-xl font-medium text-gray-300">搜索功能</h1>
+      <div>
+      <input
+            aria-label="Search"
+            type="search"
+            name="search"
+            id="search"
+            className="block w-full rounded-full border-none bg-gray-600 pl-10 font-medium text-gray-200 focus:border-vercel-pink focus:ring-2 focus:ring-vercel-pink"
+            autoComplete="off"
+          />
+        </div>
+      <output>
+        {outputData ? (
+          outputData.map((item) => <li key={item.id}>{item.name}</li>)
+        ) : (
+          <li>Loading...</li>
+        )}
 
-      <ul>
-        <li>
-          A layout is UI that is shared between multiple pages. On navigation,
-          layouts preserve state, remain interactive, and do not re-render. Two
-          or more layouts can also be nested.
-        </li>
-        <li>Try navigating between categories and sub categories.</li>
-      </ul>
-
+      </output>
+      
       <div className="flex gap-2">
         <ExternalLink href="http://www.momed.com.cn/">
           晨伫官网
@@ -31,6 +44,7 @@ export default function Page() {
           我的github
         </ExternalLink>
       </div>
+
     </div>
   );
 }
