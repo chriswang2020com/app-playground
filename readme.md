@@ -14,6 +14,14 @@ The App Router can coexist with the existing `pages` directory for incrementa
 一些需要的包apt install即可
 nodejs，npm，npm install pnpm
 
+# nodejs
+
+```sh
+curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+
 1. Install dependencies:
 
 ```sh
