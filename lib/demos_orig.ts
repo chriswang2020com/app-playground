@@ -9,16 +9,6 @@ export const demos: { name: string; items: Item[] }[] = [
     name: 'Layouts',
     items: [
       {
-        name: '项目开发中',
-        slug: 'molecule',
-        description: 'pdbqt database searching by features',
-      },
-      {
-        name: 'Bruce算法',
-        slug: 'bruce',
-        description: 'bruce算法搭建中'
-      },
-      {
         name: 'Nested Layouts',
         slug: 'layouts',
         description: 'Create UI that is shared across routes',
@@ -28,7 +18,6 @@ export const demos: { name: string; items: Item[] }[] = [
         slug: 'route-groups',
         description: 'Organize routes without affecting URL paths',
       },
-
     ],
   },
   {
