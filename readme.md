@@ -1,4 +1,5 @@
 # Next.js App Router Playground
+网站地址：http://34.134.84.132:3000/
 
 Next.js recently introduced the App Router with support for:
 
@@ -23,10 +24,4 @@ pnpm install
 pnpm dev
 ```
 
-## Documentation
 
-https://nextjs.org/docs
-
-## Leave Feedback
-
-https://github.com/vercel/next.js/discussions/41745
