@@ -1,5 +1,5 @@
 # Next.js App Router Playground
-网站地址：http://34.134.84.132:3000/
+网站地址：http://35.222.12.1162:3000/
 
 Next.js recently introduced the App Router with support for:
 
