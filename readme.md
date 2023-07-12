@@ -1,5 +1,11 @@
 # Next.js App Router Playground
 网站地址：http://35.222.12.162:3000/
+添加docker容器化操作
+必须进入项目文件夹，需要吧package.json导入docker    cd app-playground
+创建镜像 sudo docker build -t reactimage .
+开启容器 sudo docker run -d -p 3000:3000 --name app-playground reactimage
+-d在后台运行，-p 3000本地端口:3000docker端口，--name命名，
+
 
 Next.js recently introduced the App Router with support for:
 
