@@ -3,12 +3,12 @@
   "packageManager": "pnpm@8.2.0",
   "scripts": {
     "build": "next build",
-    "dev": "next dev",
+    "dev": "next dev -H 0.0.0.0",
     "lint": "next lint",
     "lint-staged": "lint-staged",
     "prettier": "prettier --write --ignore-unknown .",
     "prettier:check": "prettier --check --ignore-unknown .",
-    "start": "next start",
+    "start": "next start -H 0.0.0.0",
     "test": "yarn prettier:check && yarn lint"
   },
   "git": {
@@ -24,6 +24,7 @@
     "dinero.js": "2.0.0-alpha.8",
     "ms": "3.0.0-canary.1",
     "next": "13.4.2-canary.4",
+    "rc-slider": "10.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "server-only": "0.0.1",

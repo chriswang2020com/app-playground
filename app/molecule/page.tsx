@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { ExternalLink } from '#/ui/external-link';
 import Link from 'next/link';
+import { Html } from 'next/document';
 
 // handleSubmit处理submit之后的一系列操作
 // 由outputdata以及setoutputdata函数更新输出值
@@ -10,41 +11,46 @@ import Link from 'next/link';
 export default function Page() {
   const [query, setQuery] = useState('');
   const [input1, setInput1] = useState('');
-  const [input2, setInput2] = useState('');
-  const [input3, setInput3] = useState('');
-  const [input4, setInput4] = useState('');
-  const [input5, setInput5] = useState('');
-  const [input6, setInput6] = useState('');
-  // const [outputData, setOutputData] = useState<
-  //   { id: string; fileName: string; pdbqtText: string }[] | null
-  // >(null);
-  const [outputData, setOutputData] = useState('');
+  const [input2, setInput2] = useState(1000);
+  const [input3, setInput3] = useState(1000);
+  const [input4, setInput4] = useState(1000);
+  const [input5, setInput5] = useState(1000);
+  const [url, seturl] = useState('');
+
+  const [outputData, setOutputData] = useState<
+    { id: string; title: string }[] | null
+  >(null);
+
+  const [Smilesdata, setSmilesdata] = useState<
+    { id: string; smiles: string }[] | null
+  >(null);
+
+  const [textdata, setText] = useState('');
   const [downloadUrl, setDownloadUrl] = useState('');
 
+  const http = `http://192.168.28.8:4735/api/tutorials/limit/${input1}`;
+  const http1 = `http://192.168.28.8:4735/api/tutorials/MW/${input2}/${input3}`;
+
   const handleSubmit = (event: { preventDefault: () => void }) => {
-    event.preventDefault(); // 阻止表单默认的提交行为，因为我们要在这里自己处理提交
-
-    // fetch(`http://localhost:3001/search?q=${query}`)
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     setOutputData(data);
-    //     setDownloadUrl(data[0].downloadUrl);
-    //   });
-    setOutputData(input1 + ',' + input2 + ',' + input3 + ',' + input4);
-    setDownloadUrl('test.txt.downloadUrl');
+    event.preventDefault();
+    fetch(http)
+      .then((response) => response.json())
+      .then((data) => {
+        setSmilesdata(data);
+        setDownloadUrl(`http://192.168.28.8:4735/api/tutorials/download`);
+      });
   };
-
   return (
     <div className="space-y-6">
       <h1 className="text-xl font-medium text-gray-300">输入对应</h1>
 
       <form onSubmit={handleSubmit}>
         <div>
-          <div className="flex flex-wrap justify-between">
+          <div id="limit" className="flex flex-wrap justify-between">
             <input
-              className="m-2 w-5/12 transform rounded-lg border border-gray-300 bg-black text-white shadow-lg transition duration-200 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-600"
+              className="m-2 w-full transform rounded-lg border border-gray-300 bg-black text-white shadow-lg transition duration-200 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-600"
               type="text"
-              placeholder="输入1"
+              placeholder="limit"
               value={input1}
               onChange={(e) => setInput1(e.target.value)}
             />
@@ -69,6 +75,13 @@ export default function Page() {
               value={input4}
               onChange={(e) => setInput4(e.target.value)}
             />
+            <input
+              className="m-2 w-5/12 transform rounded-lg border border-gray-300 bg-black text-white shadow-lg transition duration-200 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-600"
+              type="text"
+              placeholder="输入5"
+              value={input5}
+              onChange={(e) => setInput4(e.target.value)}
+            />
           </div>
         </div>
 
@@ -80,22 +93,19 @@ export default function Page() {
         </button>
       </form>
 
-      {/* <output>
-        {outputData ? (
-          outputData.map((item) => (
-            <div key={item.id}>
-              <li>
-                {item.id} {item.fileName}
+      <output>
+        {Smilesdata ? (
+          <ul>
+            {Smilesdata.map((item) => (
+              <li key={item.id}>
+                <span>id: {item.id}</span>
+                <span>smiles: {item.smiles}</span>
               </li>
-              <li>{item.pdbqtText}</li>
-            </div>
-          ))
+            ))}
+          </ul>
         ) : (
           <li>Loading...</li>
         )}
-      </output> */}
-      <output>
-        {outputData ? <li>{outputData}</li> : <li>Loading...</li>}
       </output>
 
       <div className="flex gap-2">
