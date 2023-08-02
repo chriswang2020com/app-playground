@@ -2,7 +2,7 @@
 FROM node:16
 
 # 设置工作目录
-WORKDIR /usr/src/app
+WORKDIR /usr/src/apphome
 
 # 复制package.json和pnp-lock.yaml (如果有) 到工作目录
 COPY package*.json pnpm-lock.yaml ./
