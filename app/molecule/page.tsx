@@ -39,7 +39,7 @@ export default function Page() {
 
   const http = `http://192.168.28.8:4735/api/tutorials/limit/${input1}`;
   const http1 = `http://192.168.28.8:4735/api/tutorials/MW/${input2}/${input3}`;
-  const searchhttp = `http://192.168.28.8:4735/api/tutorials/search/${input2}/${input3}/${input4}/${input5}/${input6}/${input7}/${input8}/${input9}/${input10}/${input11}/${input12}/${input13}`;
+  const searchhttp = `http://192.168.31.253:4735/api/tutorials/search/${input2}/${input3}/${input4}/${input5}/${input6}/${input7}/${input8}/${input9}/${input10}/${input11}/${input12}/${input13}`;
 
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
@@ -47,7 +47,7 @@ export default function Page() {
       .then((response) => response.json())
       .then((data) => {
         setSmilesdata(data);
-        setDownloadUrl(`http://192.168.28.8:4735/api/tutorials/download`);
+        setDownloadUrl(`http://192.168.31.253:4753/api/tutorials/download`);
       });
   };
   return (
@@ -87,7 +87,7 @@ export default function Page() {
               onChange={(e) => setInput3(e.target.value)}
             />
 
-            <mark className="bg-black text-white">HBA11</mark>
+            <mark className="bg-black text-white">HBA1</mark>
             <input
               className="m-1 w-5/12 transform rounded-lg border border-gray-300 bg-black text-white shadow-lg transition duration-200 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-600"
               type="text"
@@ -96,7 +96,7 @@ export default function Page() {
               onChange={(e) => setInput4(e.target.value)}
             />
 
-            <mark className="bg-black text-white">HBA12</mark>
+            <mark className="bg-black text-white">HBA2</mark>
             <input
               className="m-1 w-5/12 transform rounded-lg border border-gray-300 bg-black text-white shadow-lg transition duration-200 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-600"
               type="text"
@@ -105,7 +105,7 @@ export default function Page() {
               onChange={(e) => setInput5(e.target.value)}
             />
 
-            <mark className="bg-black text-white">HBA21</mark>
+            <mark className="bg-black text-white">HBD1</mark>
             <input
               className="m-1 w-5/12 transform rounded-lg border border-gray-300 bg-black text-white shadow-lg transition duration-200 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-600"
               type="text"
@@ -113,7 +113,7 @@ export default function Page() {
               value={input6}
               onChange={(e) => setInput6(e.target.value)}
             />
-            <mark className="bg-black text-white">HBA22</mark>
+            <mark className="bg-black text-white">HBD2</mark>
             <input
               className="m-1 w-5/12 transform rounded-lg border border-gray-300 bg-black text-white shadow-lg transition duration-200 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-600"
               type="text"
